@@ -32,116 +32,6 @@ Class Abonado
 
     //Función que sirve para validar el dni
 
-    public function Nuevo()
-    {
-        try {
-            /*
-             * Errores cuando no pasa
-             * 2 - precio
-             * 3 - nif
-             * 4 - fechanacimiento
-             * 5 - fechaalta
-             * 6 - email
-             * 7 - iban
-             *
-             *
-             */
-            if (!empty($_POST['nombre']) and !empty($_POST['apellido1']) and !empty($_POST['apellido2']) and !empty($_POST['agente']) and !empty($_POST['nif']) and !empty($_POST['direccion']) and !empty($_POST['codigopostal']) and !empty($_POST['localidad']) and !empty($_POST['provincia']) and !empty($_POST['fechanacimiento']) and !empty($_POST['fechaalta']) and !empty($_POST['telefono1'])) {
-                $db = new Conexion();
-                $this->nombre = $db->real_escape_string($_POST['nombre']);
-                $this->apellido1 = $db->real_escape_string($_POST['apellido1']);
-                $this->apellido2 = $db->real_escape_string($_POST['apellido2']);
-                $this->agente = $db->real_escape_string($_POST['agente']);
-                $this->colectivo = $db->real_escape_string($_POST['colectivo']);
-                $this->precio = $db->real_escape_string($_POST['precio']);
-                $this->descuento = $db->real_escape_string($_POST['descuento']);
-                $this->nif = $db->real_escape_string($_POST['nif']);
-                $this->direccion = $db->real_escape_string($_POST['direccion']);
-                $this->codigopostal = $db->real_escape_string($_POST['codigopostal']);
-                $this->localidad = $db->real_escape_string($_POST['localidad']);
-                $this->provincia = $db->real_escape_string($_POST['provincia']);
-                $this->fechanacimiento = $db->real_escape_string($_POST['fechanacimiento']);
-                $this->fechaalta = $db->real_escape_string($_POST['fechaalta']);
-                $this->telefono1 = $db->real_escape_string($_POST['telefono1']);
-                $this->telefono2 = $db->real_escape_string($_POST['telefono2']);
-                $this->telefono3 = $db->real_escape_string($_POST['telefono3']);
-                $this->email = $db->real_escape_string($_POST['email']);
-                $this->iban = $db->real_escape_string($_POST['iban']);
-                $this->notas = $db->real_escape_string($_POST['notas']);
-                //Control de error:Comprueba que precio sea numerico
-                if (is_numeric($this->precio) == False) {
-                    echo 2;
-                }
-
-                //Control de error:Comprueba que el nif sea válido
-                if ($this->check_nif_cif_nie($this->nif) < 0) {
-                    echo 3;
-                    echo $this->check_nif_cif_nie($this->nif);
-                }
-
-                //control de error:Comprueba que la fecha de nacimiento sea valida
-                if (!empty($this->fechanacimiento)) {
-                    $explode = explode('-', $this->fecha);
-                    if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
-                        or $explode[1] >= 1 and $explode[1] <= 12 //mes
-                        or $explode[2] >= 1900 and $explode[2] <= 3000)
-                    ) {//año
-                        echo 4;
-                        exit;
-                    }
-                }
-                unset($explode);
-                //control de error:Comprueba que la fecha de alta sea valida
-                if (!empty($this->fechaalta)) {
-                    $explode = explode('-', $this->fecha);
-                    if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
-                        or $explode[1] >= 1 and $explode[1] <= 12 //mes
-                        or $explode[2] >= 1900 and $explode[2] <= 3000)
-                    ) {//año
-                        echo 5;
-                        exit;
-                    }
-                }
-                unset($explode);
-                //Control de error:Comprueba que el email sea valida
-                if (!empty($this->email)) {
-                    if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-                        echo 6;
-                        exit;
-                    }
-
-                }
-                //Control de error:Comprueba que el iban sea valido
-                if (!empty($iban)) {
-                    if ($this->comprobar_iban($iban) == false) {
-                        echo 7;
-                    }
-                }
-
-
-                $sql = $db->query("SELECT * FROM users WHERE user='$this->user' OR email='$this->email';");
-                if ($db->rows($sql) == 0) {
-
-
-                    echo 1;
-                } else {
-                    throw new Exception(2);
-                }
-                $db->liberar($sql);
-                $db->close();
-            } else {
-                throw new exception('Error: Datos vacios.');
-
-            }
-
-        } catch (exception $login) {
-            echo $login->getMessage();
-        }
-    }
-//validar_dni('73547889F'); // válido
-//validar_dni('73547889M'); // no válido
-//validar_dni('73547889'); // no válido
-
     private function check_nif_cif_nie($nif)
     {
         //Returns:
@@ -255,7 +145,119 @@ Class Abonado
         } else {
             echo 'no valido';
         }
+        //validar_dni('73547889F'); // válido
+        //validar_dni('73547889M'); // no válido
+        //validar_dni('73547889'); // no válido
+
+
     }
+    public function Nuevo()
+    {
+        try {
+            /*
+             * Errores cuando no pasa
+             * 2 - precio
+             * 3 - nif
+             * 4 - fechanacimiento
+             * 5 - fechaalta
+             * 6 - email
+             * 7 - iban
+             *
+             *
+             */
+            if (!empty($_POST['nombre']) and !empty($_POST['apellido1']) and !empty($_POST['apellido2']) and !empty($_POST['agente']) and !empty($_POST['nif']) and !empty($_POST['direccion']) and !empty($_POST['codigopostal']) and !empty($_POST['localidad']) and !empty($_POST['provincia']) and !empty($_POST['fechanacimiento']) and !empty($_POST['fechaalta']) and !empty($_POST['telefono1'])) {
+                $db = new Conexion();
+                $this->nombre = $db->real_escape_string($_POST['nombre']);
+                $this->apellido1 = $db->real_escape_string($_POST['apellido1']);
+                $this->apellido2 = $db->real_escape_string($_POST['apellido2']);
+                $this->agente = $db->real_escape_string($_POST['agente']);
+                $this->colectivo = $db->real_escape_string($_POST['colectivo']);
+                $this->precio = $db->real_escape_string($_POST['precio']);
+                $this->descuento = $db->real_escape_string($_POST['descuento']);
+                $this->nif = $db->real_escape_string($_POST['nif']);
+                $this->direccion = $db->real_escape_string($_POST['direccion']);
+                $this->codigopostal = $db->real_escape_string($_POST['codigopostal']);
+                $this->localidad = $db->real_escape_string($_POST['localidad']);
+                $this->provincia = $db->real_escape_string($_POST['provincia']);
+                $this->fechanacimiento = $db->real_escape_string($_POST['fechanacimiento']);
+                $this->fechaalta = $db->real_escape_string($_POST['fechaalta']);
+                $this->telefono1 = $db->real_escape_string($_POST['telefono1']);
+                $this->telefono2 = $db->real_escape_string($_POST['telefono2']);
+                $this->telefono3 = $db->real_escape_string($_POST['telefono3']);
+                $this->email = $db->real_escape_string($_POST['email']);
+                $this->iban = $db->real_escape_string($_POST['iban']);
+                $this->notas = $db->real_escape_string($_POST['notas']);
+                //Control de error:Comprueba que precio sea numerico
+                if (is_numeric($this->precio) == False) {
+                    echo 2;
+                }
+
+                //Control de error:Comprueba que el nif sea válido
+                if ($this->check_nif_cif_nie($this->nif) < 0) {
+                    echo 3;
+                    echo $this->check_nif_cif_nie($this->nif);
+                }
+
+                //control de error:Comprueba que la fecha de nacimiento sea valida
+                if (!empty($this->fechanacimiento)) {
+                    $explode = explode('-', $this->fecha);
+                    if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
+                        or $explode[1] >= 1 and $explode[1] <= 12 //mes
+                        or $explode[2] >= 1900 and $explode[2] <= 3000)
+                    ) {//año
+                        echo 4;
+                        exit;
+                    }
+                }
+                unset($explode);
+                //control de error:Comprueba que la fecha de alta sea valida
+                if (!empty($this->fechaalta)) {
+                    $explode = explode('-', $this->fecha);
+                    if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
+                        or $explode[1] >= 1 and $explode[1] <= 12 //mes
+                        or $explode[2] >= 1900 and $explode[2] <= 3000)
+                    ) {//año
+                        echo 5;
+                        exit;
+                    }
+                }
+                unset($explode);
+                //Control de error:Comprueba que el email sea valida
+                if (!empty($this->email)) {
+                    if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+                        echo 6;
+                        exit;
+                    }
+
+                }
+                //Control de error:Comprueba que el iban sea valido
+                if (!empty($iban)) {
+                    if ($this->comprobar_iban($iban) == false) {
+                        echo 7;
+                    }
+                }
+
+
+                $sql = $db->query("SELECT * FROM users WHERE user='$this->user' OR email='$this->email';");
+                if ($db->rows($sql) == 0) {
+
+
+                    echo 1;
+                } else {
+                    throw new Exception(2);
+                }
+                $db->liberar($sql);
+                $db->close();
+            } else {
+                throw new exception('Error: Datos vacios.');
+
+            }
+
+        } catch (exception $login) {
+            echo $login->getMessage();
+        }
+    }
+
 
 
 }
