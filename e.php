@@ -16,16 +16,12 @@ $resultado=str_replace($bbcode,$html,$string);
 
 echo $resultado;
 */
-
-include('core/models/class.Conexion.php');
-$db= new Conexion();
-$string='Esto es el contenido del post.
-
-Estamos probando saltos de linea y [b]bbcode[/b],para ver si todo marcha bien
-
-[img]http://gickr.com/results4/anim_d9d22f5c-3d4f-2a14-6198-fdca54635830.gif[/img]';
-
-$db->query("UPDATE posts SET contenido='$string' WHERE id='1'");
+$email='loro102gmail.com';
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo 'es valido';
+}else{
+    echo 'no es valido';
+}
 
 
 

@@ -189,52 +189,64 @@ Class Abonado
                 $this->notas = $db->real_escape_string($_POST['notas']);
                 //Control de error:Comprueba que precio sea numerico
                 if (is_numeric($this->precio) == False) {
-                    echo 2;
+                    throw new exception('El precio no es numerico');
                 }
 
+
                 //Control de error:Comprueba que el nif sea válido
-                if ($this->check_nif_cif_nie($this->nif) < 0) {
-                    echo 3;
-                    echo $this->check_nif_cif_nie($this->nif);
+                // 1 = NIF ok,
+                // 2 = CIF ok,
+                // 3 = NIE ok,
+                //-1 = NIF bad,
+                //-2 = CIF bad,
+                //-3 = NIE bad, 0 = ??? bad
+                if ($this->check_nif_cif_nie($this->nif) == -1) {
+                    throw new exception ('el NIF no es válido');
+                }elseif ($this->check_nif_cif_nie($this->nif) == -2){
+                    throw new exception ('el CIF no es válido');
+                }elseif ($this->check_nif_cif_nie($this->nif) == -3){
+                    throw new exception ('el NIE no es válido')
+                }elseif ($this->check_nif_cif_nie($this->nif) == -1){
+                    throw new exception ('No se ha conseguido validar el NIF,CIF o NIE');
                 }
+
 
                 //control de error:Comprueba que la fecha de nacimiento sea valida
                 if (!empty($this->fechanacimiento)) {
-                    $explode = explode('-', $this->fecha);
+                    $explode = explode('-', $this->fechanacimiento);
                     if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
                         or $explode[1] >= 1 and $explode[1] <= 12 //mes
                         or $explode[2] >= 1900 and $explode[2] <= 3000)
                     ) {//año
-                        echo 4;
-                        exit;
+                        throw new exception('La fecha de nacimiento no es válido');
                     }
                 }
                 unset($explode);
                 //control de error:Comprueba que la fecha de alta sea valida
                 if (!empty($this->fechaalta)) {
-                    $explode = explode('-', $this->fecha);
+                    $explode = explode('-', $this->fechaalta);
                     if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
                         or $explode[1] >= 1 and $explode[1] <= 12 //mes
                         or $explode[2] >= 1900 and $explode[2] <= 3000)
                     ) {//año
-                        echo 5;
-                        exit;
+                        throw new exception('La fecha de alta no es válido');
                     }
                 }
                 unset($explode);
                 //Control de error:Comprueba que el email sea valida
                 if (!empty($this->email)) {
-                    if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-                        echo 6;
-                        exit;
+                    if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+                        throw new exception('El email no es válido');
                     }
 
                 }
                 //Control de error:Comprueba que el iban sea valido
                 if (!empty($iban)) {
-                    if ($this->comprobar_iban($iban) == false) {
-                        echo 7;
+
+                   if ($this->comprobar_iban($iban) == false) {
+                        throw new exception('El IBAN no es válido');
                     }
+
                 }
 
 
@@ -253,8 +265,8 @@ Class Abonado
 
             }
 
-        } catch (exception $login) {
-            echo $login->getMessage();
+        } catch (exception $nuevo) {
+            echo $nuevo->getMessage();
         }
     }
 
