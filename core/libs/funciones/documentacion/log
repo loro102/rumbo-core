@@ -1,0 +1,124 @@
+/**
+ * Class Log
+ * Como vemos, la variable “filename” incluirá el nombre del fichero en el que guardaremos la información y
+ * la variable “path” es la ruta en la cual situaremos el fichero. Estas variables son opcionales desde el constructor
+ * y si no le pasamos ningún valor tomarían el nombre de fichero “log” y la ruta de la carpeta donde está situado
+ * el script.
+ *
+ * <?php
+ * class Log
+ * {
+ * public function __construct($filename, $path)
+ * {
+ * $this->path     = ($path) ? $path : "/";
+ * $this->filename = ($filename) ? $filename : "log";
+ * $this->date     = date("Y-m-d H:i:s");
+ * $this->ip       = ($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 0;
+ * }
+ *
+ * Por otro lado las variables “date” y “ip” se rellenan con la fecha actual y la ip del usuario.
+ * Un ejemplo de implementación sería esta:
+ *
+ * <?php
+ * include "Log.class.php";
+ *
+ * $log = new Log(); //valores por defecto
+ * $log = new Log("log", "./logs/"); //valores definidos[/as]
+ *
+ * El siguiente paso será crear dentro de la clase una función que nos permita generar el LOG:
+ *
+ * <?php
+ *
+ * class Log
+ * {
+ * public function __construct($filename, $path)
+ * {
+ * $this->path     = ($path) ? $path : "/";
+ * $this->filename = ($filename) ? $filename : "log";
+ * $this->date     = date("Y-m-d H:i:s");
+ * $this->ip       = ($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 0;
+ * }
+ * public function insert($text)
+ * {
+ * file_put_contents($this->path . $this->filename . $date . ".log", $text);
+ *
+ * Para crear el fichero utilizaremos el método de PHP “file_put_contents”.
+ * Esta función añadiría el contenido del parámetro “text” dentro del fichero de texto que hemos creado, y al que hemos
+ * añadido la extensión “.log”. Este fichero en el caso de no existir se creará en la ruta indicada (Es importante saber
+ * que tanto el fichero y la carpeta que lo contiene han de tener permisos de escritura).
+ *
+ *
+ * <?php
+ * include "Log.class.php";
+ * $log = new Log("log", "./logs/");
+ * $log->insert('Esto es un test!');
+ *
+ * Esta función la podemos mejorar para hacer ese sistema de LOGS más optimo.
+ * Añadiendo al texto la hora y la ip en la que se realizó el log:
+ *
+ * $log    = $this->date . " [ip] " . $this->ip . " [text] " . $text . PHP_EOL;
+ * $result = (file_put_contents($this->path . $this->filename . $date . ".log", $log)) ? 1 : 0;
+ *
+ * También hemos añadido una variable que nos indica si el log se ha escrito con éxito.
+ * Por ejemplo, devolvería “0” si el fichero o la carpeta que hemos indicado no tienen permisos de escritura.
+ *
+ * Añadiremos otra opción que nos permitirá decidir si queremos que los se guarden siempre dentro del mismo fichero
+ * (por ejemplo “datos.log”) o por si el contrario queremos generar un fichero cada vez que hagamos un log,
+ * en tal caso será útil añadirle al nombre la hora en la que se realizó (por ejemplo “archivo_2015-01-16_17:10:17.log”)
+ *
+ *
+ * public function insert($text, $dated)
+ * {
+ * if ($dated) {
+ * $date   = "_" . str_replace(" ", "_", $this->date);
+ * }
+ * else {
+ * $date   = "";
+ * };
+ * $log    = $this->date . " [ip] " . $this->ip . " [text] " . $text . PHP_EOL;
+ * $result = (file_put_contents($this->path . $this->filename . $date . ".log", $log)) ? 1 : 0;
+ *
+ *
+ * Añadiendo un “true” o “false” en el constructor controlaremos esta decisión.
+ * Otra opción interesante será poder definir si queremos eliminar el contenido anterior del fichero o
+ * si queremos ir añadiendo lineas nuevas manteniendo las anteriores (que sería lo más común).
+ * El método “file_put_contents” nos permite hacer esto con el parámetro FILE_APPEND.
+ * Añadiremos esta funcionalidad en nuestra función:
+ *
+ * public function insert($text, $dated)
+ * {
+ * if ($dated) {
+ * $date   = "_" . str_replace(" ", "_", $this->date);
+ * $append = null;
+ * }
+ * else {
+ * $date   = "";
+ * $append = ($clear) ? null : FILE_APPEND;
+ * };
+ * $log    = $this->date . " [ip] " . $this->ip . " [text] " . $text . PHP_EOL;
+ * $result = (file_put_contents($this->path . $this->filename . $date . ".log", $log, $append)) ? 1 : 0;
+ *
+ * Vemos que esta opción solo se la damos si hemos definido que no queremos la fecha en el nombre del fichero,
+ * dado que en ese caso con cada petición se genera un fichero nuevo y no tiene sentido querer mantener el contenido
+ * antiguo en el fichero nuevo.
+ * Por último añadiremos una funcionalidad importante como es la de generar archivos de backup.
+ * Por si, por ejemplo, queremos guardar una copia del fichero LOG antes de sobreescribirlo con otra sesión.
+ * Para esto utilizaremos el método “copy”:
+ *
+ * copy($this->path . $this->filename . ".log", $this->path . $this->filename . "_" . str_replace(" ", "_", $this->date) . "-backup.log");
+ *
+ * En este caso generaremos una copia del fichero que hemos indicado, añadiéndole la fecha y el texto “backup” en el
+ * nombre (por ejemplo: “datos_2015-01-16_17:12:53-backup.log”)
+ *
+ *
+ *  la implementación sería esta:
+ *
+ * <?php
+ * include "Log.class.php";
+ * $log = new Log("log", "./logs/");
+ * echo $log->insert('Esto es un test!', false, true, true);
+ *
+ *
+ *
+ *
+ */

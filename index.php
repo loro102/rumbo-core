@@ -8,9 +8,11 @@
 session_start();
 
 
-$view = isset($_GET['view']) ? $_GET['view'] : 'index';
+$view = isset($_GET['view']) ? $_GET['view'] : 'login';
 require_once('core/libs/smarty/Smarty.class.php');
 require_once('core/models/class.Conexion.php');
+require_once('core/libs/funciones/log.php');
+$log = new Log("log", "./logs/");
 
 if (isset($_SESSION['online'], $_SESSION['id']) and $_SESSION['online'] <= time()) {
     $db = new Conexion();
@@ -22,11 +24,16 @@ if (isset($_SESSION['online'], $_SESSION['id']) and $_SESSION['online'] <= time(
     unset($db, $online, $update_status, $user_id);
 }
 
+
+
+
+
+
 if (file_exists('core/controllers/' . $view . 'Controller.php')) {
     include('core/controllers/' . $view . 'Controller.php');
 } else {
     #pagina de error
-    include('core/controllers/indexController.php');
+    include('core/controllers/errorController.php');
 }
 
 

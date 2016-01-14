@@ -3,7 +3,7 @@
 Class Conexion extends mysqli{
 
     public function __construct(){
-        parent::__construct('localhost','root','','phpavanzado');
+        parent::__construct('localhost','root','123456','rumbo');
         $this->query("SET NAMES utf8");
         $this->connect_errno ? die('ERROR: Conexion a la base de datos fallida'): $x = 'conectado';
     }

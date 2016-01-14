@@ -1,0 +1,75 @@
+body {
+
+    background-color: #FFFFFF;
+    background-image: url('/styles/images/fondo.jpg');
+    background-attachment:fixed ;
+    color : #000000;
+    margin-top : 30%;
+}
+
+#txtNombre {
+}
+
+#diligencias {
+}
+
+#citas {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#SinVisita {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#finproc {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#DosmesesAJ {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#PteFras {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#Forense {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#Talones {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#PtesPago {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#Facturas {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+#CadCarnet {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+

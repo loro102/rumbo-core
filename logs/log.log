@@ -1,0 +1,174 @@
+2016-01-10 17:40:00 [ip] 127.0.0.1 [text] Esto es un test!
+2016-01-10 17:49:19 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 17:50:36 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 17:53:08 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 17:53:38 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 17:54:26 [ip] 127.0.0.1 [text] Login valido alvaro
+2016-01-10 18:00:06 [ip] 127.0.0.1 [text] Acceso no permitido a principal 
+2016-01-10 18:00:06 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 18:00:14 [ip] 127.0.0.1 [text] Acceso no permitido a principal 
+2016-01-10 18:00:14 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 18:00:33 [ip] 127.0.0.1 [text] Acceso no permitido a principal 
+2016-01-10 18:00:33 [ip] 127.0.0.1 [text] Intento de acceso no permitido
+2016-01-10 18:02:46 [ip] 127.0.0.1 [text] Acceso no autorizado
+2016-01-10 18:04:59 [ip] 127.0.0.1 [text] Acceso no autorizado a principal 
+2016-01-10 18:06:26 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-10 18:06:27 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 18:08:02 [ip] 127.0.0.1 [text] El usuario alvaro ha cerrado la sesión
+2016-01-10 18:08:02 [ip] 127.0.0.1 [text] Acceso no autorizado a principal 
+2016-01-10 18:09:59 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-10 18:09:59 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 18:10:03 [ip] 127.0.0.1 [text] El usuario alvaro ha cerrado la sesión
+2016-01-10 18:21:29 [ip] 127.0.0.1 [text] Acceso no autorizado a principal 
+2016-01-10 19:01:39 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-10 19:01:39 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:01:44 [ip] 127.0.0.1 [text] El usuario alvaro ha cerrado la sesión
+2016-01-10 19:05:22 [ip] 127.0.0.1 [text] Acceso no autorizado
+2016-01-10 19:05:28 [ip] 127.0.0.1 [text] Acceso no autorizado
+2016-01-10 19:05:35 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-10 19:05:35 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:05:40 [ip] 127.0.0.1 [text] El usuario alvaro ha cerrado la sesión
+2016-01-10 19:05:54 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-10 19:05:54 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:08:04 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:12:52 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:14:52 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:15:48 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:22:03 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 19:22:22 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-10 23:50:15 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 00:55:18 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 00:57:34 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 00:59:59 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:00:53 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:01:20 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:02:08 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:02:38 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:04:07 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:04:49 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:05:15 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:05:35 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:11:14 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:11:40 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:13:24 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:14:16 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:17:40 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:24:21 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:24:49 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:25:43 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:39:55 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:41:43 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:42:58 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:43:49 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:47:16 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:49:02 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:49:47 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:50:26 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:50:59 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:51:37 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:52:13 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:52:42 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:53:38 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:54:17 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:54:32 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:55:05 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:57:04 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 01:58:23 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:02:48 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:04:00 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:04:42 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:36:10 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:44:05 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:44:42 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:46:16 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:47:50 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:48:52 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:49:07 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:49:29 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:50:05 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:50:35 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 02:51:13 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:37:52 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:38:24 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:39:17 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:40:20 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:40:58 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:42:26 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:42:45 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:42:57 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:43:16 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:44:09 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:44:55 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:45:28 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:46:20 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:47:23 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:48:36 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:49:14 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 03:49:54 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:01:43 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:07:21 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:08:21 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:08:27 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:10:01 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:11:48 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:12:47 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:13:00 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:13:12 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:13:24 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:13:32 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:15:07 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:16:05 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:16:16 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:16:20 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:16:29 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:16:50 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:17:39 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:19:04 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:21:02 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:23:41 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 04:24:33 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 10:28:18 [ip] 127.0.0.1 [text] Acceso no autorizado
+2016-01-11 10:28:27 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-11 10:28:27 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 10:43:31 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 12:39:50 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-11 12:39:50 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 12:40:25 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 12:40:36 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 12:45:35 [ip] 127.0.0.1 [text] El usuario alvaro ha cerrado la sesión
+2016-01-11 13:00:55 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-11 13:00:56 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 13:02:11 [ip] 127.0.0.1 [text] El usuario alvaro ha cerrado la sesión
+2016-01-11 13:02:40 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-11 13:02:40 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 13:07:32 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 13:07:42 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 13:28:20 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-11 17:23:38 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-12 20:08:48 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-12 20:08:48 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-12 20:14:55 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-12 20:35:41 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-12 20:35:41 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-13 16:40:44 [ip] 10.0.2.2 [text] Acceso al programa por el usuario alvaro
+2016-01-13 16:40:44 [ip] 10.0.2.2 [text] El usuario alvaro accedió a principal
+2016-01-13 17:17:25 [ip] 10.0.2.2 [text] Acceso al programa por el usuario alvaro
+2016-01-13 17:17:26 [ip] 10.0.2.2 [text] El usuario alvaro accedió a principal
+2016-01-13 17:17:56 [ip] 10.0.2.2 [text] El usuario alvaro accedió a principal
+2016-01-13 19:41:00 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-13 19:41:00 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-13 21:04:56 [ip] 127.0.0.1 [text] Acceso no autorizado a principal 
+2016-01-13 21:05:09 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-13 21:05:09 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-13 21:12:53 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-14 10:41:59 [ip] 10.0.2.2 [text] Acceso al programa por el usuario alvaro
+2016-01-14 10:41:59 [ip] 10.0.2.2 [text] El usuario alvaro accedió a principal
+2016-01-14 14:18:55 [ip] 10.0.2.2 [text] Acceso no autorizado a principal 
+2016-01-14 14:19:05 [ip] 10.0.2.2 [text] Acceso al programa por el usuario alvaro
+2016-01-14 14:19:05 [ip] 10.0.2.2 [text] El usuario alvaro accedió a principal
+2016-01-14 14:21:55 [ip] 10.0.2.2 [text] El usuario alvaro accedió a principal
+2016-01-14 16:56:29 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-14 16:56:29 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
+2016-01-14 16:57:25 [ip] 127.0.0.1 [text] Acceso no autorizado a principal 
+2016-01-14 16:57:36 [ip] 127.0.0.1 [text] Acceso al programa por el usuario alvaro
+2016-01-14 16:57:36 [ip] 127.0.0.1 [text] El usuario alvaro accedió a principal
