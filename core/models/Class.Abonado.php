@@ -32,7 +32,7 @@ Class Abonado
 
     //Función que sirve para validar el dni
 
-    private function check_nif_cif_nie($nif)
+    private function check_nif_cif_nie($cif)
     {
         //Returns:
         // 1 = NIF ok,
@@ -187,6 +187,12 @@ Class Abonado
                 $this->email = $db->real_escape_string($_POST['email']);
                 $this->iban = $db->real_escape_string($_POST['iban']);
                 $this->notas = $db->real_escape_string($_POST['notas']);
+
+                $db=new conexion();
+                $sql=$db->query("INSERT INTO abonados ( `Nombre`, `Apellido1`, `Apellido2`, `Direccion`, `Codigo Postal`, `Localidad`, `Provincia`, `NIF`, `FechaNacimiento`, `FechaPrimerAbono`, `Telefono 1`, `Telefono 2`, `Telefono 3`, `Email`, `Notas`, `Colectivo`, `Agente`, `Precio`, `CCC`, `Descuento`) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
+
+
+
                 //Control de error:Comprueba que precio sea numerico
                 if (is_numeric($this->precio) == False) {
                     throw new exception('El precio no es numerico');
@@ -205,7 +211,7 @@ Class Abonado
                 }elseif ($this->check_nif_cif_nie($this->nif) == -2){
                     throw new exception ('el CIF no es válido');
                 }elseif ($this->check_nif_cif_nie($this->nif) == -3){
-                    throw new exception ('el NIE no es válido')
+                    throw new exception ('el NIE no es válido');
                 }elseif ($this->check_nif_cif_nie($this->nif) == -1){
                     throw new exception ('No se ha conseguido validar el NIF,CIF o NIE');
                 }
