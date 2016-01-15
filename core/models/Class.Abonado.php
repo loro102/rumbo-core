@@ -51,7 +51,26 @@ Class Abonado
 
     //Validar campo de texto sea solo texto
     private function validar_texto($texto){
-        if (ereg('(^[a-zA-Z]{3,50}$',$texto)){
+        if (preg_match('/^[a-zñÑáéíóú\s]{4,28}$/i',$texto)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //validar campo numerico sea numerico
+    private function validar_numero($numero){
+        if (is_numeric($numero)){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    //validar campo email sea email con formato válido
+    private function validar_email($email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
         }else{
             return false;
@@ -79,7 +98,7 @@ Class Abonado
             $num[$i] = substr($cif, $i, 1);
         }
         //si no tiene un formato valido devuelve error
-        if (!ereg('((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)', $cif)) {
+        if (!preg_match('((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)', $cif)) {
             return 0;
         }
         //comprobacion de NIFs estandar
@@ -98,7 +117,7 @@ Class Abonado
         }
         $n = 10 - substr($suma, strlen($suma) - 1, 1);
         //comprobacion de NIFs especiales (se calculan como CIFs)
-        if (ereg('^[KLM]{1}', $cif)) {
+        if (preg_match('^[KLM]{1}', $cif)) {
             if ($num[8] == chr(64 + $n)) {
                 return 1;
             } else {
@@ -106,7 +125,7 @@ Class Abonado
             }
         }
         //comprobacion de CIFs
-        if (ereg('^[ABCDEFGHJNPQRSUVW]{1}', $cif)) {
+        if (preg_match('^[ABCDEFGHJNPQRSUVW]{1}', $cif)) {
             if ($num[8] == chr(64 + $n) || $num[8] ==
 
                 substr($n, strlen($n) - 1, 1)
@@ -118,7 +137,7 @@ Class Abonado
         }
         //comprobacion de NIEs
         //T
-        if (ereg('^[T]{1}', $cif)) {
+        if (preg_match('^[T]{1}', $cif)) {
             if ($num[8] == ereg('^[T]{1}[A-Z0-9]{8}$', $cif)) {
                 return 3;
             } else {
@@ -126,7 +145,7 @@ Class Abonado
             }
         }
         //XYZ
-        if (ereg('^[XYZ]{1}', $cif)) {
+        if (preg_match('^[XYZ]{1}', $cif)) {
             if ($num[8] == substr('TRWAGMYFPDXBNJZSQVHLCKE', substr(str_replace(array('X', 'Y', 'Z'), array('0', '1', '2'), $cif), 0, 8) % 23, 1)) {
                 return 3;
             } else {
@@ -220,8 +239,23 @@ Class Abonado
                 $this->notas = $db->real_escape_string($_POST['notas']);
 
                 //Si encuentra algun dato que no este correctamente validado devuelve un numero indicando los errores encontrados
+                $sql=$db->query("SELECT abonados.NIF FROM abonados WHERE abonados.NIF like '%$this->nif%';");
 
-                if (nombre ===true)
+                if ($db->rows($sql)<=0){
+                    if ($this->validar_texto($this->nombre)===false){
+                        throw new exception(1);
+                    }
+
+                    if ($this->validar_texto($this->apellido1));
+
+
+
+                }
+
+
+                if ($this->nombre === true){
+
+                }
 
                 $db=new conexion();
                 $sql=$db->query("INSERT INTO abonados ( Nombre, Apellido1, Apellido2, Direccion, Codigo Postal, Localidad, Provincia, NIF, FechaNacimiento, FechaPrimerAbono, `Telefono 1`, `Telefono 2`, `Telefono 3`, Email, Notas, Colectivo, Agente, Precio, CCC, Descuento) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
@@ -256,7 +290,7 @@ Class Abonado
                 if (!empty($this->fechanacimiento)) {
 
                 }
-                unset($explode);
+
                 //control de error:Comprueba que la fecha de alta sea valida
                 if (!empty($this->fechaalta)) {
                     $explode = explode('-', $this->fechaalta);
