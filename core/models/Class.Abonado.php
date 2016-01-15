@@ -30,6 +30,37 @@ Class Abonado
     private $iban;
     private $notas;
 
+   /*Creo funciones privadas para validar los datos recibidos usando true o false*/
+
+    private function validar_fecha($fecha){
+
+        $explode = explode('-', $fecha);
+        if (!($explode[0] >= 1 and $explode[0] <= 31
+            or $explode[1] >= 1 and $explode[1] <= 12
+            or $explode[2] >= 1900 and $explode[2] <= 3000)) {
+            return true;
+
+        }else{
+            return false;
+        }
+        unset($explode);
+
+    }
+
+
+
+    //Validar campo de texto sea solo texto
+    private function validar_texto($texto){
+        if (ereg('(^[a-zA-Z]{3,50}$',$texto)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
     //Función que sirve para validar el dni
 
     private function check_nif_cif_nie($cif)
@@ -188,13 +219,17 @@ Class Abonado
                 $this->iban = $db->real_escape_string($_POST['iban']);
                 $this->notas = $db->real_escape_string($_POST['notas']);
 
+                //Si encuentra algun dato que no este correctamente validado devuelve un numero indicando los errores encontrados
+
+                if (nombre ===true)
+
                 $db=new conexion();
-                $sql=$db->query("INSERT INTO abonados ( `Nombre`, `Apellido1`, `Apellido2`, `Direccion`, `Codigo Postal`, `Localidad`, `Provincia`, `NIF`, `FechaNacimiento`, `FechaPrimerAbono`, `Telefono 1`, `Telefono 2`, `Telefono 3`, `Email`, `Notas`, `Colectivo`, `Agente`, `Precio`, `CCC`, `Descuento`) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
+                $sql=$db->query("INSERT INTO abonados ( Nombre, Apellido1, Apellido2, Direccion, Codigo Postal, Localidad, Provincia, NIF, FechaNacimiento, FechaPrimerAbono, `Telefono 1`, `Telefono 2`, `Telefono 3`, Email, Notas, Colectivo, Agente, Precio, CCC, Descuento) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
 
 
 
                 //Control de error:Comprueba que precio sea numerico
-                if (is_numeric($this->precio) == False) {
+                if (is_numeric($this->precio) === False) {
                     throw new exception('El precio no es numerico');
                 }
 
@@ -219,13 +254,7 @@ Class Abonado
 
                 //control de error:Comprueba que la fecha de nacimiento sea valida
                 if (!empty($this->fechanacimiento)) {
-                    $explode = explode('-', $this->fechanacimiento);
-                    if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
-                        or $explode[1] >= 1 and $explode[1] <= 12 //mes
-                        or $explode[2] >= 1900 and $explode[2] <= 3000)
-                    ) {//año
-                        throw new exception('La fecha de nacimiento no es válido');
-                    }
+
                 }
                 unset($explode);
                 //control de error:Comprueba que la fecha de alta sea valida

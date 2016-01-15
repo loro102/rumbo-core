@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="83026952-ae87-4c76-a5db-d9b798de3660" name="rumbo" url="http://loro102.dynu.com">
-        <fileTransfer host="loro102.dynu.com" port="8004" rootFolder="/var/www" accessType="SFTP" password="df9bdf98df99df9edf9fdf9c" username="root">
+      <webServer id="83026952-ae87-4c76-a5db-d9b798de3660" name="rumbo (project level)" url="http://127.0.0.1">
+        <fileTransfer host="127.0.0.1" port="22" rootFolder="/var/www" accessType="SFTP" password="df9bdf98df99df9edf9fdf9c" username="root">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
