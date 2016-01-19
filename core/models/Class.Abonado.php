@@ -32,41 +32,6 @@ Class Abonado
 
    /*Creo funciones privadas para validar los datos recibidos usando true o false*/
 
-    private function validar_fecha($fecha){
-
-        $explode = explode('-', $fecha);
-        if (!($explode[0] >= 1 and $explode[0] <= 31
-            or $explode[1] >= 1 and $explode[1] <= 12
-            or $explode[2] >= 1900 and $explode[2] <= 3000)) {
-            return true;
-
-        }else{
-            return false;
-        }
-        unset($explode);
-
-    }
-
-
-
-    //Validar campo de texto sea solo texto
-    private function validar_texto($texto){
-        if (preg_match('/^[a-zñÑáéíóú\s]{4,28}$/i',$texto)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    //validar campo numerico sea numerico
-    private function validar_numero($numero){
-        if (is_numeric($numero)){
-            return true;
-        }else{
-            return false;
-        }
-
-    }
 
     //validar campo email sea email con formato válido
     private function validar_email($email){

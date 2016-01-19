@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="a7b67c40-5771-45f3-a7cf-5dce83a6f0c2">
-        <schema name="rumbo" object-types="column, constraint, function, index, procedure, table, trigger, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a7b67c40-5771-45f3-a7cf-5dce83a6f0c2">
