@@ -15,11 +15,11 @@
             </div>
             {else}
             {/if}
-        <div class="container">
-            <div class="form-signin" style="width:500px;">
+        <div class="container" >
+            <div class="form-sign" style="width:500px;">
                 <h2 class="form-signin-heading">Nuevo Cliente</h2>
                 <label for="nombre"  class="sr-only">Nombre</label>
-                <input type="text" id="nombre" class="form-control" placeholder="Introduzca el nombre del cliente" required="" autofocus="">
+                <input type="text" id="nombre" class="form-control" placeholder="Introduzca el nombre del cliente" required="" autofocus="" >
                 <label for="apellido1"  class="sr-only">Apellido</label>
                 <input type="text" id="apellido1" class="form-control" placeholder="Introduzca el primer apellido" required="" autofocus="">
                 <label for="apellido1"  class="sr-only">Apellido2</label>

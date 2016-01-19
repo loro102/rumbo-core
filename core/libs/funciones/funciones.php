@@ -12,7 +12,7 @@ function cambiaf_mysql($fechadb){
 //vamos a suponer que recibmos el formato MySQL básico de YYYY-MM-DD
 //lo primero es separar cada elemento en una variable
     list($yy,$mm,$dd)=explode("-",$fechadb);
-//si viniera en otro formato, adaptad el explode y el orden de las variables a lo que necesitéis
+//si viniera en otro formato, adaptar el explode y el orden de las variables a lo que se necesite
 //creamos un objeto DateTime (existe desde PHP 5.2)
     $fecha = new DateTime();
 //definimos la fecha pasándole las variabes antes extraídas
@@ -36,7 +36,6 @@ function validar_texto($texto){
 }
 function es_alfabetico($c) {
     $re = '/^[a-zA-ZñÑ]+$/';
-
     return (preg_match($re, $c));
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +152,39 @@ function email_valido($email) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////
+//Comprueba si el IBAN es valido
+////////////////////////////////////////////////////
+function checkIBAN($iban) {
+
+// Normalize input (remove spaces and make upcase)
+    $iban = strtoupper(str_replace(' ', '', $iban));
+
+    if (preg_match('/^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/', $iban)) {
+        $country = substr($iban, 0, 2);
+        $check = intval(substr($iban, 2, 2));
+        $account = substr($iban, 4);
+
+        // To numeric representation
+        $search = range('A','Z');
+        foreach (range(10,35) as $tmp)
+            $replace[]=strval($tmp);
+        $numstr=str_replace($search, $replace, $account.$country.'00');
+
+        // Calculate checksum
+        $checksum = intval(substr($numstr, 0, 1));
+        for ($pos = 1; $pos < strlen($numstr); $pos++) {
+            $checksum *= 10;
+            $checksum += intval(substr($numstr, $pos,1));
+            $checksum %= 97;
+        }
+
+        return ((98-$checksum) == $check);
+    } else
+        return false;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
 //Comprueba si nif cif o nie es valido
 ////////////////////////////////////////////////////
 function validar_nif_cif_nie($nif)
@@ -207,7 +239,7 @@ function validar_nif_cif_nie($nif)
                 return 1;
             }
         }else{
-            if (strtoupper($control) == $letras[$suma_D]){
+            if (strtoupper($control) == $letras_cif[$suma_D]){
                 return 1;
             }
         }
