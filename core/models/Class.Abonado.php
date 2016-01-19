@@ -23,65 +23,10 @@ Class Abonado
     private $iban;
     private $notas;
 
-    /**
-     * Valor para validar una cuenta bancaria IBAN
-     */
-    private function comprobar_iban($iban)
-    {
-        # definimos un array de valores con el valor de cada letra
-        $letras = array("A" => 10, "B" => 11, "C" => 12, "D" => 13, "E" => 14, "F" => 15, "G" => 16, "H" => 17, "I" => 18, "J" => 19, "K" => 20, "L" => 21, "M" => 22, "N" => 23, "O" => 24, "P" => 25, "Q" => 26, "R" => 27, "S" => 28, "T" => 29, "U" => 30, "V" => 31, "W" => 32, "X" => 33, "Y" => 34, "Z" => 35);
-        # Eliminamos los posibles espacios al inicio y final
-        $iban = trim($iban);
-        # Convertimos en mayusculas
-        $iban = strtoupper($iban);
-        # eliminamos espacio y guiones que haya en el iban
-        $iban = str_replace(array(" ", "-"), "", $iban);
-        if (strlen($iban) == 24) {
-            # obtenemos los codigos de las dos letras
-            $valorLetra1 = $letras[substr($iban, 0, 1)];
-            $valorLetra2 = $letras[substr($iban, 1, 1)];
-            # obtenemos los siguientes dos valores
-            $siguienteNumeros = substr($iban, 2, 2);
-            $valor = substr($iban, 4, strlen($iban)) . $valorLetra1 . $valorLetra2 . $siguienteNumeros;
-            if (bcmod($valor, 97) == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    private function validar_dni($dni)
-    {
-        $letra = substr($dni, -1);
-        $numeros = substr($dni, 0, -1);
-        if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8) {
-            echo 'valido';
-        } else {
-            echo 'no valido';
-        }
-        //validar_dni('73547889F'); // válido
-        //validar_dni('73547889M'); // no válido
-        //validar_dni('73547889'); // no válido
-
-
-    }
     public function Nuevo()
     {
         try {
-            /*
-             * Errores cuando no pasa
-             * 2 - precio
-             * 3 - nif
-             * 4 - fechanacimiento
-             * 5 - fechaalta
-             * 6 - email
-             * 7 - iban
-             *
-             *
-             */
+
             if (!empty($_POST['nombre']) and !empty($_POST['apellido1']) and !empty($_POST['apellido2']) and !empty($_POST['agente']) and !empty($_POST['nif']) and !empty($_POST['direccion']) and !empty($_POST['codigopostal']) and !empty($_POST['localidad']) and !empty($_POST['provincia']) and !empty($_POST['fechanacimiento']) and !empty($_POST['fechaalta']) and !empty($_POST['telefono1'])) {
                 $db = new Conexion();
                 $this->nombre = $db->real_escape_string($_POST['nombre']);
@@ -125,71 +70,11 @@ Class Abonado
                 }
 
                 $db=new conexion();
-                $sql=$db->query("INSERT INTO abonados ( Nombre, Apellido1, Apellido2, Direccion, Codigo Postal, Localidad, Provincia, NIF, FechaNacimiento, FechaPrimerAbono, `Telefono 1`, `Telefono 2`, `Telefono 3`, Email, Notas, Colectivo, Agente, Precio, CCC, Descuento) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
 
-
-
-                //Control de error:Comprueba que precio sea numerico
-                if (is_numeric($this->precio) === False) {
-                    throw new exception('El precio no es numerico');
-                }
-
-
-                //Control de error:Comprueba que el nif sea válido
-                // 1 = NIF ok,
-                // 2 = CIF ok,
-                // 3 = NIE ok,
-                //-1 = NIF bad,
-                //-2 = CIF bad,
-                //-3 = NIE bad, 0 = ??? bad
-                if ($this->check_nif_cif_nie($this->nif) == -1) {
-                    throw new exception ('el NIF no es válido');
-                }elseif ($this->check_nif_cif_nie($this->nif) == -2){
-                    throw new exception ('el CIF no es válido');
-                }elseif ($this->check_nif_cif_nie($this->nif) == -3){
-                    throw new exception ('el NIE no es válido');
-                }elseif ($this->check_nif_cif_nie($this->nif) == -1){
-                    throw new exception ('No se ha conseguido validar el NIF,CIF o NIE');
-                }
-
-
-                //control de error:Comprueba que la fecha de nacimiento sea valida
-                if (!empty($this->fechanacimiento)) {
-
-                }
-
-                //control de error:Comprueba que la fecha de alta sea valida
-                if (!empty($this->fechaalta)) {
-                    $explode = explode('-', $this->fechaalta);
-                    if (!($explode[0] >= 1 and $explode[0] <= 31 //dia
-                        or $explode[1] >= 1 and $explode[1] <= 12 //mes
-                        or $explode[2] >= 1900 and $explode[2] <= 3000)
-                    ) {//año
-                        throw new exception('La fecha de alta no es válido');
-                    }
-                }
-                unset($explode);
-                //Control de error:Comprueba que el email sea valida
-                if (!empty($this->email)) {
-                    if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-                        throw new exception('El email no es válido');
-                    }
-
-                }
-                //Control de error:Comprueba que el iban sea valido
-                if (!empty($iban)) {
-
-                   if ($this->comprobar_iban($iban) == false) {
-                        throw new exception('El IBAN no es válido');
-                    }
-
-                }
-
-
-                $sql = $db->query("SELECT * FROM users WHERE user='$this->user' OR email='$this->email';");
+                $sql = $db->query("SELECT * FROM abonados WHERE NIF='$this->nif';");
+                //Si no encuentra el DNI introducido en la base de datos procede a insertar los datos
                 if ($db->rows($sql) == 0) {
-
-
+                    $sql=$db->query("INSERT INTO abonados ( Nombre, Apellido1, Apellido2, Direccion, Codigo Postal, Localidad, Provincia, NIF, FechaNacimiento, FechaPrimerAbono, `Telefono 1`, `Telefono 2`, `Telefono 3`, Email, Notas, Colectivo, Agente, Precio, CCC, Descuento) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
                     echo 1;
                 } else {
                     throw new Exception(2);
