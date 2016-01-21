@@ -1,5 +1,5 @@
 <?php
-
+include ('../libs/funciones/funciones.php');
 /**
  * Created by PhpStorm.
  * User: adminstracion
@@ -27,7 +27,18 @@ Class Abonado
     {
         try {
 
-            if (!empty($_POST['nombre']) and !empty($_POST['apellido1']) and !empty($_POST['apellido2']) and !empty($_POST['agente']) and !empty($_POST['nif']) and !empty($_POST['direccion']) and !empty($_POST['codigopostal']) and !empty($_POST['localidad']) and !empty($_POST['provincia']) and !empty($_POST['fechanacimiento']) and !empty($_POST['fechaalta']) and !empty($_POST['telefono1'])) {
+            if (!empty($_POST['nombre'])
+                and !empty($_POST['apellido1'])
+                and !empty($_POST['apellido2'])
+                and !empty($_POST['agente'])
+                and !empty($_POST['nif'])
+                and !empty($_POST['direccion'])
+                and !empty($_POST['codigopostal'])
+                and !empty($_POST['localidad'])
+                and !empty($_POST['provincia'])
+                and !empty($_POST['fechanacimiento'])
+                and !empty($_POST['fechaalta'])
+                and !empty($_POST['telefono1'])) {
                 $db = new Conexion();
                 $this->nombre = $db->real_escape_string($_POST['nombre']);
                 $this->apellido1 = $db->real_escape_string($_POST['apellido1']);
@@ -49,31 +60,72 @@ Class Abonado
                 $this->email = $db->real_escape_string($_POST['email']);
                 $this->iban = $db->real_escape_string($_POST['iban']);
                 $this->notas = $db->real_escape_string($_POST['notas']);
+                $errores=array();
 
                 //Si encuentra algun dato que no este correctamente validado devuelve un numero indicando los errores encontrados
-                $sql=$db->query("SELECT abonados.NIF FROM abonados WHERE abonados.NIF like '%$this->nif%';");
-
-                if ($db->rows($sql)<=0){
-                    if ($this->validar_texto($this->nombre)===false){
-                        throw new exception(1);
+                if (es_alfabetico($this->nombre)===FALSE){
+                    throw new Exception ('Error:El campo nombre no es valido',1);
+                }
+                if (es_alfabetico($this->apellido1)===FALSE){
+                    throw new Exception ('Error:El campo apellido no es valido',1);
+                }
+                if (es_alfabetico($this->apellido2)===FALSE){
+                    throw new Exception ('Error:El campo apellido2 no es valido',1);
+                }
+                if (isset($this->precio)){
+                    if (es_numero($this->precio)===FALSE){
+                        throw new Exception ('Error:El campo precio no es valido',1);
                     }
-
-                    if ($this->validar_texto($this->apellido1));
-
-
-
+                }
+                if (isset($this->nif)){
+                    if (validar_nif_cif_nie($this->nif)===FALSE){
+                        throw new Exception ('Error:El campo nif no es valido',1);
+                    }
                 }
 
-
-                if ($this->nombre === true){
-
+                if (isset($this->codigopostal)){
+                    if (cp_valido($this->codigopostal)===FALSE){
+                    throw new Exception ('Error:El campo codigo postal no es valido',1);
+                }
                 }
 
-                $db=new conexion();
+                if (validar_fecha($this->fechanacimiento)===FALSE){
+                    throw new Exception ('Error:El campo fecha de nacimiento no es valido',1);
+                }
+                if (validar_fecha($this->fechaalta)===FALSE){
+                    throw new Exception ('Error:El campo fecha de alta no es valido',1);
+                }
+                if (fijo_valido($this->telefono1)===FALSE){
+                    throw new Exception ('Error:El campo telefono fijo no es valido',1);
+                }
+                if (isset($this->telefono2)){
+                    if (movil_valido($this->telefono2)===FALSE){
+                        throw new Exception ('Error:El campo telefono movil no es valido',1);
+                    }
+                }
+
+                if (isset($this->telefono3)){
+                    if (telefono_valido($this->telefono3)===FALSE){
+                        throw new Exception ('Error:El campo telefono extra no es valido',1);
+                    }
+                }
+
+                if (isset($this->email)){
+                    if (email_valido($this->email)===FALSE){
+                        throw new Exception ('Error:El campo email no es valido',1);
+                    }
+                }
+
+                if (isset($this->iban)){
+                    if (checkIBAN($this->iban)===FALSE){
+                        throw new Exception ('Error:El campo IBAN no es valido',1);
+                    }
+                }
 
                 $sql = $db->query("SELECT * FROM abonados WHERE NIF='$this->nif';");
                 //Si no encuentra el DNI introducido en la base de datos procede a insertar los datos
                 if ($db->rows($sql) == 0) {
+                    if ()
                     $sql=$db->query("INSERT INTO abonados ( Nombre, Apellido1, Apellido2, Direccion, Codigo Postal, Localidad, Provincia, NIF, FechaNacimiento, FechaPrimerAbono, `Telefono 1`, `Telefono 2`, `Telefono 3`, Email, Notas, Colectivo, Agente, Precio, CCC, Descuento) VALUES ('$this->nombre','$this->apellido1','$this->apellido2','$this->direccion','$this->codigopostal','$this->localidad','$this->provincia','$this->nif','$this->fechanacimiento','$this->fechaalta','$this->telefono1','$this->telefono2','$this->telefono3)','$this->email','$this->notas','$this->colectivo','$this->agente','$this->precio','$this->iban','$this->descuento');");
                     echo 1;
                 } else {

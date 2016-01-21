@@ -76,7 +76,7 @@
     </center>
         </div>
         {include 'overall/footer.tpl'}
-    <script src='styles/js/nuevo.js' language="javascript" type="text/javascript"></script>
+    <script src='styles/js/abonado.js' language="javascript" type="text/javascript"></script>
 
 
 </body>

@@ -6,6 +6,7 @@
  * Time: 15:24
  */
 // Comprueba si el usuario esta logueado
+include('core/models/class.Abonado.php');
 if (isset($_SESSION['id'],$_SESSION['usuario'])) {
     $template = new Smarty();
     $template->assign('titulo', 'Abonados');
@@ -26,12 +27,14 @@ if (isset($_SESSION['id'],$_SESSION['usuario'])) {
                         'Nombre'=>$x['Nombre'],
                         'id' => $x['Id'],
                     );
-                }$template->assign('agente',$agente);
+                }
+                $template->assign('agente',$agente);
 
             }
 
             $db->liberar($sql);
             $db->close();
+            $template->nuevo();
             $template->assign('titulo', 'Registrar nuevo cliente');
             $template->display('abonados/nuevo.tpl');
 

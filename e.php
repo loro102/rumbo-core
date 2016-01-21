@@ -15,7 +15,7 @@ Esto es un salto de linea
 $resultado=str_replace($bbcode,$html,$string);
 
 echo $resultado;
-*/
+
 
 $numero='10';
 
@@ -89,4 +89,24 @@ if (preg_match('/^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/', $iban)) {
         echo 'iban valido';
     } else
     echo 'iban no valido';
+}
+*/
+try {
+    $x=3;
+    if ($x==1){
+        throw new Exception (1);
+    }
+    if ($x>0 and $x <3){
+        throw new Exception (2);
+    }
+
+    if ($x<5){
+        throw new Exception (3);
+    }
+
+
+
+    throw new Exception ('Error:El campo vapullo no es valido');
+} catch (exception $nuevo) {
+    echo $nuevo->getMessage();
 }
